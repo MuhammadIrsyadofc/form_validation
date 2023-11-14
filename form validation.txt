@@ -1,0 +1,14 @@
+Form Validation :
+1. clien side
+   clien side form validation : 
+   1. html5 build in validation
+        build in validation :
+        ( input type )
+        ( Attributes )
+   2. javascript
+
+2. server side
+
+
+
+

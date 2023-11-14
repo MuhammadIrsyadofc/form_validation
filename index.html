@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html5 form validation</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        form{
+            width: 250px;
+            padding: 20px;
+            background: linear-gradient(orange,lightblue,grey);
+            margin: 20px auto;
+        }
+        form div{
+            margin: 10px 5px;
+        }
+        label{
+            display: block;
+        }
+        form button{
+            width: 200px;
+            margin: 5px 10px;
+            background-color: rgb(67, 151, 64);
+            padding: 10px;
+        }
+        input:valid, 
+        input:required{
+            border: 1px solid black;
+            outline: inherit;
+            border-radius: inherit;  
+        }
+        input:invalid,
+        input:required:invalid{
+            border: 1px solid black;
+            outline: 2px solid red;
+            border-radius: 2px;            
+        }
+    </style>
+</head>
+<body>
+<form action="valid" method="post" autocomplete="off" novalidate>
+    <div>
+        <label for="nama">masukan nama</label>
+        <input type="text" id="nama" name="nama" autofocus required minlength="2" maxlength="15" oninvalid="this.setCustomValidity('masukan nama anda')" oninput="this.setCustomValidity('')">
+    </div>
+    <div>
+        <label for="email">masukan email</label>
+        <input type="email" id="email" name="email">
+    </div>
+    <div>
+        <label for="password">masukan password</label>
+        <input type="password" id="password" name="password" >
+    </div>
+    <div>
+        <h2>jenis kelamin :</h2>
+        <label for="radio">pria</label>
+        <input type="radio" id="radio" name="jeniskelamin">
+
+        <label for="wanita">wanita</label>
+        <input type="radio" id="wanita" name="jeniskelamin">
+
+        <h2>masukan hobby :</h2>
+        <label for="hobby">bola</label>
+        <input type="checkbox" id="hobby">
+    </div>
+    <div>
+        <label for="hobby">traveling</label>
+        <input type="checkbox" id="hobby">
+    </div>
+    <div>
+        <label for="hobby">web programing</label>
+        <input type="checkbox" id="hobby">
+    </div>
+    <div>
+        <label for="angka">masukan number :</label>
+        <input type="number" id="angka" name="angka" min="10" max="100" step="5">
+    </div>
+    <div>
+        <label for="warna">masukan warna</label>
+        <input type="color" id="warna" name="warna">
+        <span class="hexa"></span>
+    </div>
+    <div>
+        <label for="pesan">tulis pesan</label>
+        <textarea name="textarea" id="pesan" cols="30" rows="10" placeholder="masukan pesan anda"></textarea>
+    </div>
+
+    <div>
+        <label for="telepon">masukan no hp</label>
+        <input type="tel" id="telepon" name="telepon">
+    </div>
+    <div>
+        <label for="website">masukan website anda :</label>
+        <input type="url" id="website" name="website">
+    </div>
+    <div>
+        <label for="slider">masukan number :</label>
+        <span class="awal"></span>
+        <input type="range" id="slider" min="0" max="100" step="5">
+        <span class="akhir"></span>
+    </div>
+    <div>
+        <label for="tanggal">masukan tanggal :</label>
+        <input type="date" id="tanggal" name="tanggal">
+    </div>
+    <div>
+        <label for="bulan">masukan bulan :</label>
+        <input type="month" id="bulan" name="bulan">
+    </div>
+    <div>
+        <label for="minggu">masukan minggu :</label>
+        <input type="week" id="minggu" name="minggu">
+    </div>
+    <div>
+        <label for="time">masukan waktu :</label>
+        <input type="time" id="mitimeggu" name="time">
+    </div>
+    <!-- attribut type pattern -->
+    <!-- regex atau regular expresion -->
+    <div>
+        <label for="kodepos">masukan kode pos</label>
+        <input type="text" id="kodepos" pattern="^([1-9])[0-9]{4}$">
+    </div>
+    <div>
+        <label for="nomorhp">masukan nomor hp</label>
+        <input type="tel"  id="nomorhp" pattern="(\+62|62|0)8[1-9][0-9]{6,10}">
+    </div>
+    
+    <div>
+     <button type="submit">kirim</button>
+    </div>
+</form>
+
+
+<script>
+    // membuat hexa
+    const warna = document.querySelector('#warna')
+    const hexa = document.querySelector('.hexa')
+     
+    hexa.innerHTML = warna.value ;
+    warna.addEventListener('input', function(){
+      hexa.innerHTML = warna.value ;
+      hexa.style.color = 'bisque' ;
+    })   
+
+    // membuat slider sesuai dengan urusan yang dipilih
+    const slider = document.querySelector('#slider')
+    const awal = document.querySelector('.awal')
+    const akhir = document.querySelector('.akhir')
+
+    awal.innerHTML = slider.min ;
+    akhir.innerHTML = slider.value ;
+
+    slider.addEventListener('input', function(){
+      akhir.innerHTML = slider.value ;
+    }) ; 
+</script>
+
+    
+</body>
+</html>
